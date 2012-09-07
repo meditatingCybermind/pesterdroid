@@ -1,0 +1,48 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_mood"
+        android:orderInCategory="99"
+        android:showAsAction="always"
+        android:title="@string/menu_mood"
+        android:icon="@drawable/chummy" >
+        <menu>
+            <item android:id="@+id/mood1" android:title="Chummy" android:icon="@drawable/chummy"/>
+	        <item android:id="@+id/mood2" android:title="Rancorous" android:icon="@drawable/rancorous"/>
+	        
+	        <item android:id="@+id/mood3" android:title="Pleasant" android:icon="@drawable/pleasant"/>
+	        <item android:id="@+id/mood4" android:title="Distraught" android:icon="@drawable/distraught"/>
+	        <item android:id="@+id/mood5" android:title="Pranky" android:icon="@drawable/pranky"/>
+	        
+	        <item android:id="@+id/mood6" android:title="Smooth" android:icon="@drawable/smooth"/>
+	        <item android:id="@+id/mood7" android:title="Mystified" android:icon="@drawable/mystified"/>
+	        <item android:id="@+id/mood8" android:title="Amazed" android:icon="@drawable/amazed"/>
+	        <item android:id="@+id/mood9" android:title="Insolent" android:icon="@drawable/insolent"/>
+	        <item android:id="@+id/mood10" android:title="Bemused" android:icon="@drawable/bemused"/>
+	        
+	        <item android:id="@+id/mood11" android:title="Ecstatic" android:icon="@drawable/ecstatic"/>
+	        <item android:id="@+id/mood12" android:title="Relaxed" android:icon="@drawable/relaxed"/>
+	        <item android:id="@+id/mood13" android:title="Discontent" android:icon="@drawable/discontent"/>
+	        <item android:id="@+id/mood14" android:title="Devious" android:icon="@drawable/devious"/>
+	        <item android:id="@+id/mood15" android:title="Sleek" android:icon="@drawable/sleek"/>
+	        <item android:id="@+id/mood16" android:title="Detestful" android:icon="@drawable/detestful"/>
+	        <item android:id="@+id/mood17" android:title="Mirthful" android:icon="@drawable/mirthful"/>
+	        <item android:id="@+id/mood18" android:title="Manipulative" android:icon="@drawable/manipulative"/>
+	        <item android:id="@+id/mood19" android:title="Vigorous" android:icon="@drawable/vigorous"/>
+	        <item android:id="@+id/mood20" android:title="Perky" android:icon="@drawable/perky"/>
+	        <item android:id="@+id/mood21" android:title="Acceptant" android:icon="@drawable/acceptant"/>
+	        <item android:id="@+id/mood22" android:title="Protective" android:icon="@drawable/protective"/>
+	        
+	        <item android:id="@+id/mood23" android:title="Offline" android:icon="@drawable/offline"/>
+        </menu>
+    </item>
+    <item android:id="@+id/menu_chumroll" android:icon="@drawable/ic_menu_friendslist" android:showAsAction="ifRoom|withText" android:title="@string/menu_chumroll" android:orderInCategory="100" android:titleCondensed="@string/menu_chumroll_short"></item><item android:id="@+id/menu_memolist" android:showAsAction="ifRoom|withText" android:titleCondensed="@string/menu_memolist_short" android:title="@string/menu_memolist" android:orderInCategory="101"></item><item android:id="@+id/menu_nickserv" android:title="@string/menu_nickserv" android:showAsAction="never" android:orderInCategory="102"></item><item android:id="@+id/menu_settings"
+        android:title="@string/menu_settings"
+        android:orderInCategory="150"
+        android:icon="@android:drawable/ic_menu_preferences" android:showAsAction="never"/>
+    <item android:id="@+id/menu_help"
+        android:title="@string/menu_help"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:orderInCategory="151" android:showAsAction="never"/>
+    
+    
+    
+</menu>

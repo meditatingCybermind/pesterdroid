@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <PreferenceCategory android:title="Profile settings">
+        <EditTextPreference
+            android:key="username"
+            android:title="Handle"
+            android:defaultValue="pesterClient"
+            android:dialogTitle="Handle (Username)"/>
+        <com.distantsphere.pesterchum.mobile.ColorPickerPreference
+            android:key="colour"
+            android:title="Colour"
+            android:summary="Text colour"
+            android:defaultValue="#FF000000"/>
+    </PreferenceCategory><PreferenceCategory android:title="Network settings">
+        <CheckBoxPreference android:title="Low bandwidth mode" android:summary="Save battery and bandwidth by not receiving moods" android:key="bandwidth_low" android:defaultValue="off"/>
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="Notification settings">
+	    <ListPreference
+	        android:title="Notification Level"
+	        android:key="notify_level"
+	        android:entries="@array/notification_levels"
+	        android:entryValues="@array/notification_levels"
+	        android:defaultValue="Always"/>
+	    
+	    
+	    <PreferenceScreen android:title="Notification settings" android:key="notify_settings"><PreferenceCategory android:title="Notification settings"><RingtonePreference android:showSilent="true" android:showDefault="true" android:title="Select ringtone" android:ringtoneType="notification" android:key="notify_ringtone" />
+	    
+</PreferenceCategory><PreferenceCategory android:title="Vibrate settings">
+    <ListPreference android:title="Vibrate" android:summary="Also vibrate when notified" android:key="notify_vibrate"/>
+    <ListPreference android:title="Vibrate pattern" android:summary="Change vibrate pattern" android:key="notify_vibrate_pattern"/>
+    <CheckBoxPreference android:key="notify_vibrate_oncall" android:summary="Allow vibrate while on a call" android:title="Vibrate on Call"/>
+</PreferenceCategory>
+	    
+</PreferenceScreen>
+	    
+	</PreferenceCategory>
+	
+	<PreferenceCategory android:title="Orientation settings">
+		<CheckBoxPreference android:title="Orientation Lock" android:key="orientation_lock" android:defaultValue="false"/>
+		<ListPreference
+		    android:entries="@array/orientation_lock"
+		    android:title="Orientation"
+		    android:entryValues="@array/orientation_lock"
+		    android:key="orientation_value"
+		    android:defaultValue="Portrait" android:dependency="orientation_lock"/>
+	</PreferenceCategory>
+    
+</PreferenceScreen>

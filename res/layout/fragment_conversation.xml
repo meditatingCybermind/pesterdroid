@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <com.distantsphere.pesterchum.mobile.PesterText
+        android:id="@+id/editText_conversation"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_gravity="left|end"
+        android:layout_weight="1"
+        android:autoLink="all"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:linksClickable="true" >
+
+        <requestFocus />
+    </com.distantsphere.pesterchum.mobile.PesterText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/editText_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ems="10"
+            android:imeOptions="actionSend|flagNoExtractUi"
+            android:inputType="text|textCapSentences|textAutoCorrect"
+            android:maxLines="3" />
+
+        <Button
+            android:id="@+id/button_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="sendMessage"
+            android:text="Send" />
+    </LinearLayout>
+
+</LinearLayout>

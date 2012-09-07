@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="notification_levels">
+        <item >Always</item>
+        <item >Sometimes</item>
+        <item >Never</item>
+    </string-array>
+    <string-array name="mood_list">
+        <item >Chummy</item>
+        <item >Rancorous</item>
+        
+        <item >Pleasant</item>
+        <item >Distraught</item>
+        <item >Pranky</item>
+        
+        <item >Smooth</item>
+        <item >Mystified</item>
+        <item >Amazed</item>
+        <item >Insolent</item>
+        <item >Bemused</item>
+        
+        <item >Ecstatic</item>
+        <item >Relaxed</item>
+        <item >Discontent</item>
+        <item >Devious</item>
+        <item >Sleek</item>
+        <item >Detestful</item>
+        <item >Mirthful</item>
+        <item >Manipulative</item>
+        <item >Vigorous</item>
+        <item >Perky</item>
+        <item >Acceptant</item>
+        <item >Protective</item>
+        
+        <item >Offline</item>
+    </string-array>
+    <string-array name="orientation_lock">
+        <item >Portrait</item>
+        <item >Landscape</item>
+    </string-array>
+</resources>
