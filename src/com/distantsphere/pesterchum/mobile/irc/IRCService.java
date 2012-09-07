@@ -77,7 +77,6 @@ public class IRCService extends Service {
 
 	@Override
 	public IBinder onBind(Intent arg0) {
-		// TODO Auto-generated method stub
 		return mBinder;
 	}
 

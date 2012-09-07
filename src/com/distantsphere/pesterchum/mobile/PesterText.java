@@ -22,7 +22,6 @@ import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
 import android.text.util.Linkify;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.EditText;
 
 public class PesterText extends EditText {
@@ -33,10 +32,10 @@ public class PesterText extends EditText {
 	private final Pattern _url          = Pattern.compile("(?i)(?:^|(?<=\\s))(?:(?:https?|ftp)://|magnet:)[^\\s]+");
 	private final Pattern _url2         = Pattern.compile("(?i)www\\.[^\\s]+");
 	
+	// TODO: Turn #memo and @handle into links
 	private final Pattern _memo         = Pattern.compile("(?:\\s|^)(#[A-Za-z0-9_]+)");
 	private final Pattern _handle       = Pattern.compile("(?:\\s|^)(@[A-Za-z0-9_]+)");
 	
-	//private final Pattern _img          = Pattern.compile("(?i):(\\S+):");
 	private final Pattern _img2         = Pattern.compile("(?i)<img src=[\'\"](\\S+)[\'\"]\\s*/>");
 	
 	private final Pattern _me_cmd       = Pattern.compile("^(?:/me|PESTERCHUM:ME) ?(\\S*)");
@@ -117,7 +116,7 @@ public class PesterText extends EditText {
 	
 	static String join(Collection<?> s, String delimiter) {
 		StringBuilder builder = new StringBuilder();
-		Iterator iter = s.iterator();
+		Iterator<?> iter = s.iterator();
 		while (iter.hasNext()) {
 			builder.append(iter.next());
 			if (!iter.hasNext()) {
@@ -130,7 +129,6 @@ public class PesterText extends EditText {
 
 	public PesterText(Context context) {
 		super(context);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public PesterText(Context context, AttributeSet attrs) {
@@ -201,21 +199,15 @@ public class PesterText extends EditText {
 	}
 	
 	private class Span {
-		//private final int mPos;
 		private final String mString;
 		private final MatchResult mMatch;
 		private final Tag mType;
 		
 		public Span(Tag type, String string, MatchResult match) {
-			//mPos = position;
 			mType = type;
 			mString = string;
 			mMatch = match;
 		}
-		
-		/*public int getPosition() {
-			return mPos;
-		}*/
 		
 		public Tag getType() {
 			return mType;
@@ -243,10 +235,6 @@ public class PesterText extends EditText {
 		return Tag.NONE;
 	}
 	
-	/* List of (Span)
-	 * 
-	 * 
-	 */
 	private Vector<Span> lexMessage(String text) {
 		Vector<Span> stringlist = new Vector<Span>();
 		stringlist.add(new Span(Tag.NONE, text, null));
@@ -254,10 +242,8 @@ public class PesterText extends EditText {
 		for (Pattern re : lexlist) {
 			if (re == _url || re == _url2)
 				continue;
-			Log.d("regexp", re.pattern());
 			Vector<Span> newstringlist = new Vector<Span>();
 			for (Span s : stringlist) {
-				Log.d("lex", s.getString());
 				MatchResult aftermatch = null;
 				if (s.getMatch() != null) {
 					if (s.getString() == "") {
@@ -271,9 +257,6 @@ public class PesterText extends EditText {
 				Matcher m = re.matcher(s.getString());
 				while (m.find()) {
 					int start = m.start();
-					Log.d("substring", lasti + ":" + start);
-					Log.d("substring", s.getString().substring(lasti, start));
-					Log.d("match", m.group());
 					Span tag = new Span(patternToTagType(re), s.getString().substring(lasti, start), m.toMatchResult());
 					newstringlist.add(tag);
 					lasti = m.end();
@@ -287,7 +270,6 @@ public class PesterText extends EditText {
 			}
 			stringlist = newstringlist;
 		}
-		Log.d("lex", "done lexing");
 		
 		return stringlist;
 	}
@@ -308,16 +290,6 @@ public class PesterText extends EditText {
 		SpannableStringBuilder sb = new SpannableStringBuilder(stripText);
 		
 		Vector<Span> stringlist = lexMessage(text);
-		for (Span s : stringlist) {
-			String str = s.getString();
-			if (str != "") {
-				Log.d("span", s.getString());
-			}
-			MatchResult m = s.getMatch();
-			if (m != null) {
-				Log.d("span", m.group());
-			}
-		}
 		
 		int position = 0;
 		for (Span s : stringlist) {
@@ -405,14 +377,12 @@ public class PesterText extends EditText {
 		
     	// Apply all styles (bold, italic, underline) to message
 		while (!styleStack.empty()) {
-			Log.e("style stack", "not empty");
             Style s = styleStack.pop();
             sspanStack.push(new StySpan(s.mStart, messageLength, s.mStyle));
         }
         
         while (!sspanStack.empty()) {
             StySpan sspan = sspanStack.pop();
-            Log.d("StyleSpan " + sspan.mStyle, sspan.mStart + ":" + sspan.mEnd);
             if (sspan.mStyle == 'u') {
                 UnderlineSpan us = new UnderlineSpan();
                 sb.setSpan(us, sspan.mStart, sspan.mEnd, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
@@ -431,14 +401,6 @@ public class PesterText extends EditText {
         // Apply links
         Linkify.addLinks(sb, Linkify.WEB_URLS);
         setMovementMethod(LinkMovementMethod.getInstance());
-        
-        // Apply emoticons
-        /*Drawable d = getResources().getDrawable(R.drawable.chummy);
-        d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
-        ImageSpan span = new ImageSpan(d, ImageSpan.ALIGN_BASELINE);
-        
-        
-        sb.setSpan(span, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);*/
 		
 		super.append("\n");
     	super.append(sb);

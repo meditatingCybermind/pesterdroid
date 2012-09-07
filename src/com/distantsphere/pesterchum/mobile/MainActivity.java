@@ -15,10 +15,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.ActionBar;
@@ -29,8 +26,6 @@ import com.actionbarsherlock.view.MenuItem;
 import com.devspark.collapsiblesearchmenu.CollapsibleMenuUtils;
 import com.distantsphere.pesterchum.mobile.irc.IRCService;
 import com.distantsphere.pesterchum.mobile.irc.IRCService.IRCBinder;
-
-//import org.jibble.pircbot.*;
 
 public class MainActivity extends SherlockFragmentActivity implements ServiceConnection {
 	private Menu mainmenu;
@@ -65,12 +60,10 @@ public class MainActivity extends SherlockFragmentActivity implements ServiceCon
         Tab tab = actionbar.newTab()
         		.setText("#General_Chat")
         		.setIcon(R.drawable.chummy);
-        //actionbar.addTab(tab);
         mTabsAdapter.addTab(tab, ConversationFragment.class, null);
         
         tab = actionbar.newTab()
         		.setText("canLover");
-        //actionbar.addTab(tab);
         mTabsAdapter.addTab(tab, ConversationFragment.class, null);
     }
     
@@ -88,7 +81,6 @@ public class MainActivity extends SherlockFragmentActivity implements ServiceCon
         	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         }
         
-        Log.e("ASDFASDF", "BLUH");
         // Start and connect to service
         Intent intent = new Intent(this, IRCService.class);
         intent.setAction(IRCService.ACTION_FOREGROUND);
@@ -166,17 +158,11 @@ public class MainActivity extends SherlockFragmentActivity implements ServiceCon
     public void onDestroy() {
     	super.onDestroy();
     	
-    	/*String ns = Context.NOTIFICATION_SERVICE;
-        NotificationManager mNotifMan = (NotificationManager) getSystemService(ns);
-        mNotifMan.cancel(HELLO_ID);*/
     	if (mBinder != null && mBinder.getService() != null) {
     		mBinder.getService().stopSelf();
     	}
     }
 
-	private static int last_tab = Tab.INVALID_POSITION;
-	private static int pos = Tab.INVALID_POSITION;
-    
     public static class MyTabListener extends FragmentPagerAdapter
     				implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
 		private final Context mContext;
@@ -238,25 +224,6 @@ public class MainActivity extends SherlockFragmentActivity implements ServiceCon
 		}
 
 		public void onTabSelected(Tab tab, FragmentTransaction ft) {
-			/*pos = tab.getPosition();
-			// Check if the fragment is already initialized
-			if (mFragment == null) {
-				// If not, instantiate and add it to the activity
-				mFragment = (SherlockFragment) SherlockFragment.instantiate(mActivity, mClass.getName());
-				ft.setCustomAnimations(R.anim.in_convo, android.R.anim.fade_out);
-				ft.add(android.R.id.content, mFragment);
-			} else {
-				// If it exists, simply attach it in order to show it
-				if (last_tab == Tab.INVALID_POSITION) {
-					ft.setCustomAnimations(R.anim.in_convo, 0);
-				} else if (pos < last_tab) {
-					ft.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-				} else {
-					ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-				}
-				ft.attach(mFragment);
-			}*/
-			
 			Object tag = tab.getTag();
 			for (int i=0; i<mTabs.size(); ++i) {
 				if (mTabs.get(i) == tag) {
@@ -266,11 +233,7 @@ public class MainActivity extends SherlockFragmentActivity implements ServiceCon
 		}
 
 		public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-			/*last_tab = tab.getPosition();
-			if (mFragment != null) {
-				ft.setCustomAnimations(0, android.R.anim.fade_out);
-				ft.detach(mFragment);
-			}*/
+
 		}
 
 		public void onTabReselected(Tab tab, FragmentTransaction ft) {
@@ -279,14 +242,11 @@ public class MainActivity extends SherlockFragmentActivity implements ServiceCon
     
 	@Override
 	public void onServiceConnected(ComponentName name, IBinder service) {
-		// TODO Auto-generated method stub
-		Log.d("MainActivity", "service connect");
 		mBinder = (IRCBinder) service;
 	}
 
 	@Override
 	public void onServiceDisconnected(ComponentName name) {
-		// TODO Auto-generated method stub
 		mBinder = null;
 	}
 }

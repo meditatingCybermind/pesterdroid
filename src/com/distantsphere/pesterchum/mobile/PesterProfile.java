@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Vector;
 import java.util.regex.Pattern;
 
-import android.graphics.Color;
 import android.util.Pair;
 
 public class PesterProfile {

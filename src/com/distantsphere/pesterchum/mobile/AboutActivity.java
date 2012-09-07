@@ -16,7 +16,7 @@ public class AboutActivity extends SherlockPreferenceActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_about);
+        
         addPreferencesFromResource(R.xml.about);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         
@@ -25,7 +25,6 @@ public class AboutActivity extends SherlockPreferenceActivity {
 			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 			findPreference("about_about").setSummary("Version " + pInfo.versionName);
 		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

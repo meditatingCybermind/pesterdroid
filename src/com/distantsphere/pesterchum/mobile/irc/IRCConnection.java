@@ -87,11 +87,6 @@ public class IRCConnection extends PircBot {
 		
 	}
 	
-	/*@Override
-	protected void onPrivateMessage(String sender, String login, String hostname, String target, String text) {
-		
-	}*/
-	
 	@Override
 	protected void onNotice(String sourceNick, String sourceLogin, String sourceHostname, String target, String notice) {
 		
