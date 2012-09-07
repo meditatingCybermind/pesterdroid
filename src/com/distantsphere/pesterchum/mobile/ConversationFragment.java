@@ -1,10 +1,10 @@
 package com.distantsphere.pesterchum.mobile;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.actionbarsherlock.R;
@@ -28,10 +28,16 @@ public class ConversationFragment extends SherlockFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		//Log.d("Conversation", "onCreateView");
-		View view = inflater.inflate(R.layout.fragment_conversation, container, false);
+		final View view = inflater.inflate(R.layout.fragment_conversation, container, false);
 		
-		//EditText edittext = (EditText) view.findViewById(R.id.editText_message);
-		//edittext.requestFocus();
+		Button sendbtn = (Button) view.findViewById(R.id.button_send);
+		sendbtn.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				sendMessage(view);
+			}
+		});
 		
 		return view;
 	}
@@ -45,8 +51,17 @@ public class ConversationFragment extends SherlockFragment {
 	public void onDetach() {
 		super.onDetach();
 	}
-	/*public void setText(String item) {
-		TextView view = (TextView) getView().findViewById(R.id.detailsText);
-		view.setText(item);
-	}*/
+	
+	public void sendMessage(View view) {
+    	EditText text_message = (EditText) view.findViewById(R.id.editText_message);
+    	String message = text_message.getText().toString();
+    	text_message.setText(null);
+    	if (message.length() == 0)
+    		return;
+    	PesterText text_conversation = (PesterText) view.findViewById(R.id.editText_conversation);
+    	
+    	text_conversation.addMessage(message);
+    	
+    	text_conversation.setSelection(text_conversation.end());
+    }
 }

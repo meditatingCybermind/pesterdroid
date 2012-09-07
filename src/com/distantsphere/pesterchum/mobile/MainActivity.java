@@ -39,8 +39,6 @@ public class MainActivity extends SherlockFragmentActivity implements ServiceCon
 	private IRCService service;
 	private IRCBinder mBinder;
 	
-	private static int instanceCount = 0;
-	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -175,18 +173,6 @@ public class MainActivity extends SherlockFragmentActivity implements ServiceCon
     		mBinder.getService().stopSelf();
     	}
     }
-    
-    public void sendMessage(View view) {
-    	EditText text_message = (EditText) findViewById(R.id.editText_message);
-    	String message = text_message.getText().toString();
-    	text_message.setText(null);
-    	PesterText text_conversation = (PesterText) findViewById(R.id.editText_conversation);
-    	
-    	text_conversation.addMessage(message);
-    	
-    	text_conversation.setSelection(text_conversation.end());
-    }
-    
 
 	private static int last_tab = Tab.INVALID_POSITION;
 	private static int pos = Tab.INVALID_POSITION;
