@@ -20,5 +20,6 @@
     <string name="title_activity_abstract">AbstractActivity</string>
     <string name="title_activity_start">StartActivity</string>
     <string name="notification_running">Pesterchum Running&#8230;</string>
+    <string name="default_notification_types">Memo MentionsOV=I=XseparatorX=I=VONew Conversations</string>
 
 </resources>

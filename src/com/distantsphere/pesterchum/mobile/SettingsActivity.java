@@ -1,5 +1,7 @@
 package com.distantsphere.pesterchum.mobile;
 
+import java.util.ArrayList;
+
 import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -15,6 +17,7 @@ import android.util.Log;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.distantsphere.preferences.ListPreferenceMultiSelect;
 
 public class SettingsActivity extends SherlockPreferenceActivity {
 	EditTextPreference username;
@@ -39,34 +42,26 @@ public class SettingsActivity extends SherlockPreferenceActivity {
 			}
 		});
         
-        ListPreference notify = (ListPreference)findPreference("notify_level");
-        String value = prefs.getString("notify_level", "");
-        if (value.equals("Always")) {
-        	notify.setSummary("Any message not in active conversation");
-		} else if (value.equals("Sometimes")) {
-			notify.setSummary("Only on new conversations");
-		} else if (value.equals("Never")) {
-			notify.setSummary("Never create notifications");
+        ListPreferenceMultiSelect notify = (ListPreferenceMultiSelect)findPreference("notify_types");
+        String[] values = notify.getValues();
+		if (values == null || values.length == 0) {
+			PreferenceScreen notify_settings = (PreferenceScreen)findPreference("notify_settings");
+			notify_settings.setEnabled(false);
+		} else {
+			PreferenceScreen notify_settings = (PreferenceScreen)findPreference("notify_settings");
+			notify_settings.setEnabled(true);
 		}
         notify.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 			
+			@SuppressWarnings("unchecked")
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				String value = (String)newValue;
-				if (value.equals("Always")) {
-					preference.setSummary("Any message not in active conversation");
-					PreferenceScreen notify_settings = (PreferenceScreen)findPreference("notify_settings");
-					notify_settings.setEnabled(true);
-				} else if (value.equals("Sometimes")) {
-					preference.setSummary("Only on new conversations");
-					PreferenceScreen notify_settings = (PreferenceScreen)findPreference("notify_settings");
-					notify_settings.setEnabled(true);
-				} else if (value.equals("Never")) {
-					preference.setSummary("Never create notifications");
+				if (((ArrayList<String>) newValue).isEmpty()) {
 					PreferenceScreen notify_settings = (PreferenceScreen)findPreference("notify_settings");
 					notify_settings.setEnabled(false);
 				} else {
-					preference.setSummary("");
+					PreferenceScreen notify_settings = (PreferenceScreen)findPreference("notify_settings");
+					notify_settings.setEnabled(true);
 				}
 				return true;
 			}
