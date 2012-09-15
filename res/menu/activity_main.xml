@@ -1,5 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_mood"
+    <item
+        android:id="@+id/menu_mood"
         android:orderInCategory="99"
         android:showAsAction="always"
         android:title="@string/menu_mood"
@@ -34,14 +35,35 @@
 	        <item android:id="@+id/mood23" android:title="Offline" android:icon="@drawable/offline"/>
         </menu>
     </item>
-    <item android:id="@+id/menu_chumroll" android:icon="@drawable/ic_menu_friendslist" android:showAsAction="ifRoom|withText" android:title="@string/menu_chumroll" android:orderInCategory="100" android:titleCondensed="@string/menu_chumroll_short"></item><item android:id="@+id/menu_memolist" android:showAsAction="ifRoom|withText" android:titleCondensed="@string/menu_memolist_short" android:title="@string/menu_memolist" android:orderInCategory="101"></item><item android:id="@+id/menu_nickserv" android:title="@string/menu_nickserv" android:showAsAction="never" android:orderInCategory="102"></item><item android:id="@+id/menu_settings"
+    <item
+        android:id="@+id/menu_chumroll"
+        android:icon="@drawable/ic_menu_friendslist"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_chumroll"
+        android:orderInCategory="100"
+        android:titleCondensed="@string/menu_chumroll_short"/>
+    <item
+        android:id="@+id/menu_memolist"
+        android:showAsAction="ifRoom|withText"
+        android:titleCondensed="@string/menu_memolist_short"
+        android:title="@string/menu_memolist"
+        android:orderInCategory="101"/>
+    <item android:id="@+id/menu_nickserv"
+        android:title="@string/menu_nickserv"
+        android:showAsAction="never"
+        android:orderInCategory="102"/>
+    <item
+        android:id="@+id/menu_settings"
         android:title="@string/menu_settings"
         android:orderInCategory="150"
-        android:icon="@android:drawable/ic_menu_preferences" android:showAsAction="never"/>
-    <item android:id="@+id/menu_help"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_help"
         android:title="@string/menu_help"
         android:icon="@android:drawable/ic_menu_info_details"
-        android:orderInCategory="151" android:showAsAction="never"/>
+        android:orderInCategory="151"
+        android:showAsAction="never"/>
     
     
     
