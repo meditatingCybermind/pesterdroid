@@ -1,6 +1,8 @@
 package com.distantsphere.pesterchum.mobile;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +42,17 @@ public class ConversationFragment extends SherlockFragment {
 		});
 		
 		return view;
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
+		float size = Float.valueOf((prefs.getString("chat_fontsize", "11"))).floatValue();
+		
+		EditText text_conversation = (EditText) getView().findViewById(R.id.editText_conversation);
+		text_conversation.setTextSize(size);
 	}
 	
 	@Override
