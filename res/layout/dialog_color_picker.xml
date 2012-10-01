@@ -21,7 +21,7 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:orientation="vertical">
-	<com.distantsphere.pesterchum.mobile.ColorPickerView
+	<com.distantsphere.preferences.colorpicker.ColorPickerView
 	    android:id="@+id/color_picker_view"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
 		android:orientation="horizontal"
 		android:layout_marginBottom="10dp">
 
-		<com.distantsphere.pesterchum.mobile.ColorPickerPanelView
+		<com.distantsphere.preferences.colorpicker.ColorPickerPanelView
 			android:id="@+id/old_color_panel"
 			android:layout_width="0px"
 			android:layout_height="fill_parent"
@@ -62,7 +62,7 @@
 			android:layout_marginRight="10dp"
 		/>
 	
-		<com.distantsphere.pesterchum.mobile.ColorPickerPanelView
+		<com.distantsphere.preferences.colorpicker.ColorPickerPanelView
 			android:id="@+id/new_color_panel"
 			android:layout_width="0px"
 			android:layout_height="wrap_content"

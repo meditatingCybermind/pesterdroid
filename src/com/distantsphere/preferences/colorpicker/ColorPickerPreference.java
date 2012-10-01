@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.distantsphere.pesterchum.mobile;
+package com.distantsphere.preferences.colorpicker;
 
 import android.content.Context;
 import android.graphics.Bitmap;

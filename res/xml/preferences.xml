@@ -7,7 +7,7 @@
             android:title="Handle"
             android:defaultValue="pesterClient"
             android:dialogTitle="Handle (Username)"/>
-        <com.distantsphere.pesterchum.mobile.ColorPickerPreference
+        <com.distantsphere.preferences.colorpicker.ColorPickerPreference
             android:key="colour"
             android:title="Colour"
             android:summary="Text colour"
