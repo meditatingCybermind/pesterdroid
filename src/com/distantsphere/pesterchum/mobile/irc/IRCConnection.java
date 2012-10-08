@@ -59,7 +59,10 @@ public class IRCConnection extends PircBot {
 	
 	@Override
 	protected void onJoin(String target, String sender, String login, String hostname) {
-		
+		if (sender.equalsIgnoreCase(getNick())) {
+			// We joined a new channel
+			
+		}
 	}
 	
 	@Override

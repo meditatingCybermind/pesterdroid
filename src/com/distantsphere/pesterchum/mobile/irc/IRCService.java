@@ -1,5 +1,10 @@
 package com.distantsphere.pesterchum.mobile.irc;
 
+import java.io.IOException;
+
+import org.jibble.pircbot.IrcException;
+import org.jibble.pircbot.NickAlreadyInUseException;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -21,6 +26,7 @@ public class IRCService extends Service {
 	public static final String ACTION_ACK_NEW_MENTIONS = "com.distantsphere.pesterchum.mobile.service.ack_new_mentions";
 	public static final String EXTRA_ACK_SERVERID = "com.distantsphere.pesterchum.mobile.service.ack_serverid";
     public static final String EXTRA_ACK_CONVTITLE = "com.distantsphere.pesterchum.mobile.service.ack_convtitle";
+    public static final String ACTION_CONNECT = "com.distantsphere.pesterchum.mobile.service.connect";
 	
     private static final int FOREGROUND_NOTIFICATION = 1;
 
@@ -72,6 +78,19 @@ public class IRCService extends Service {
 			stopForeground(true);
 		} else if (ACTION_ACK_NEW_MENTIONS.equals(intent.getAction())) {
 			//ackNewMentions(intent.getIntExtra(EXTRA_ACK_SERVERID, -1), intent.getStringExtra(EXTRA_ACK_CONVTITLE));
+		} else if (ACTION_CONNECT.equals(intent.getAction())) {
+			try {
+				connect();
+			} catch (NickAlreadyInUseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IrcException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -80,4 +99,26 @@ public class IRCService extends Service {
 		return mBinder;
 	}
 
+	public void connect() throws NickAlreadyInUseException, IOException, IrcException {
+		Log.w("connect()", "starting connection");
+		connection = new IRCConnection();
+		connection.setVerbose(true);
+		connection.setNickname("mobileTest");
+		connection.setRealName("pcm1");
+		connection.connect("irc.mindfang.org");
+	}
+	
+	public void disconnect() {
+		if (connection != null) {
+			connection.disconnect();
+		}
+	}
+	
+	@Override
+	public void onDestroy() {
+		disconnect();
+		if (foreground) {
+			stopForeground(true);
+		}
+	}
 }
