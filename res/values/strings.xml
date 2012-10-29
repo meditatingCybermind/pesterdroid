@@ -1,9 +1,9 @@
 <resources>
 
-    <string name="app_name">Pesterchum Mobile</string>
+    <string name="app_name">Pesterdroid</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">Pesterchum Mobile</string>
-    <string name="title_activity_settings">Pesterchum Settings</string>
+    <string name="title_activity_main">Pesterdroid</string>
+    <string name="title_activity_settings">Pesterdroid Settings</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Colour Picker</string>
@@ -19,7 +19,7 @@
     <string name="menu_nickserv">NickServ</string>
     <string name="title_activity_abstract">AbstractActivity</string>
     <string name="title_activity_start">StartActivity</string>
-    <string name="notification_running">Pesterchum Running&#8230;</string>
+    <string name="notification_running">Pesterdroid Running…</string>
     <string name="default_notification_types">Memo MentionsOV=I=XseparatorX=I=VONew Conversations</string>
 
 </resources>

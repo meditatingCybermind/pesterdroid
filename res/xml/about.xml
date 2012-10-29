@@ -8,9 +8,9 @@
     </PreferenceCategory>
     
     <PreferenceCategory android:title="About">
-        <Preference android:title="Pesterchum Mobile" android:summary="Version 0.0.0" android:key="about_about" />
+        <Preference android:title="@string/app_name" android:summary="Version 0.0.0" android:key="about_about" />
         <PreferenceScreen android:title="Credits">
-            <Preference android:title="Pesterchum Mobile"
+            <Preference android:title="@string/app_name"
                 android:summary="kiooeht"/>
             <Preference android:title="Pesterchum 3.14 - 3.41.X"
                 android:summary="illuminatedwax / kiooeht"
