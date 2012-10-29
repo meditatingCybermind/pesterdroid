@@ -1,4 +1,4 @@
-package com.distantsphere.pesterchum.mobile.irc;
+package com.evacipated.pesterchum.mobile.irc;
 
 import java.io.IOException;
 
@@ -14,19 +14,19 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.distantsphere.pesterchum.mobile.MainActivity;
-import com.distantsphere.pesterchum.mobile.R;
+import com.evacipated.pesterchum.mobile.R;
+import com.evacipated.pesterchum.mobile.MainActivity;
 
 public class IRCService extends Service {
 	private IRCConnection connection;
 	private boolean foreground = false;
 	
-	public static final String ACTION_FOREGROUND = "com.distantsphere.pesterchum.mobile.service.foreground";
-	public static final String ACTION_BACKGROUND = "com.distantsphere.pesterchum.mobile.service.background";
-	public static final String ACTION_ACK_NEW_MENTIONS = "com.distantsphere.pesterchum.mobile.service.ack_new_mentions";
-	public static final String EXTRA_ACK_SERVERID = "com.distantsphere.pesterchum.mobile.service.ack_serverid";
-    public static final String EXTRA_ACK_CONVTITLE = "com.distantsphere.pesterchum.mobile.service.ack_convtitle";
-    public static final String ACTION_CONNECT = "com.distantsphere.pesterchum.mobile.service.connect";
+	public static final String ACTION_FOREGROUND = "com.evacipated.pesterchum.mobile.service.foreground";
+	public static final String ACTION_BACKGROUND = "com.evacipated.pesterchum.mobile.service.background";
+	public static final String ACTION_ACK_NEW_MENTIONS = "com.evacipated.pesterchum.mobile.service.ack_new_mentions";
+	public static final String EXTRA_ACK_SERVERID = "com.evacipated.pesterchum.mobile.service.ack_serverid";
+    public static final String EXTRA_ACK_CONVTITLE = "com.evacipated.pesterchum.mobile.service.ack_convtitle";
+    public static final String ACTION_CONNECT = "com.evacipated.pesterchum.mobile.service.connect";
 	
     private static final int FOREGROUND_NOTIFICATION = 1;
 

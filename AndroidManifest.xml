@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.distantsphere.pesterchum.mobile"
+    package="com.evacipated.pesterchum.mobile"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -28,14 +28,14 @@
             android:label="@string/title_activity_settings" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.distantsphere.pesterchum.mobile.MainActivity" />
+                android:value="com.evacipated.pesterchum.mobile.MainActivity" />
         </activity>
         <activity
             android:name=".AboutActivity"
             android:label="@string/title_activity_about" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.distantsphere.pesterchum.mobile.MainActivity" />
+                android:value="com.evacipated.pesterchum.mobile.MainActivity" />
         </activity><activity android:name=".StartActivity" android:label="@string/title_activity_start">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

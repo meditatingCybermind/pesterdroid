@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.distantsphere.preferences.colorpicker;
+package com.evacipated.preferences.colorpicker;
 
 import android.content.Context;
 import android.graphics.Bitmap;

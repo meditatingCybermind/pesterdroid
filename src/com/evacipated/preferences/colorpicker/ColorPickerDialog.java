@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.distantsphere.preferences.colorpicker;
+package com.evacipated.preferences.colorpicker;
 
-import com.distantsphere.pesterchum.mobile.R;
+import com.evacipated.pesterchum.mobile.R;
 
 import android.app.Dialog;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.distantsphere.pesterchum.mobile;
+package com.evacipated.pesterchum.mobile;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,8 @@ import android.util.Log;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.distantsphere.preferences.ListPreferenceMultiSelect;
+import com.evacipated.pesterchum.mobile.R;
+import com.evacipated.preferences.ListPreferenceMultiSelect;
 
 public class SettingsActivity extends SherlockPreferenceActivity {
 	EditTextPreference username;

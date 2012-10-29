@@ -1,9 +1,10 @@
-package com.distantsphere.pesterchum.mobile;
+package com.evacipated.pesterchum.mobile;
 
 import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
+import com.evacipated.pesterchum.mobile.R;
 
 public class StartActivity extends SherlockActivity {
 

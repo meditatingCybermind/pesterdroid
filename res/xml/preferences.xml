@@ -7,7 +7,7 @@
             android:title="Handle"
             android:defaultValue="pesterClient"
             android:dialogTitle="Handle (Username)"/>
-        <com.distantsphere.preferences.colorpicker.ColorPickerPreference
+        <com.evacipated.preferences.colorpicker.ColorPickerPreference
             android:key="colour"
             android:title="Colour"
             android:summary="Text colour"
@@ -58,7 +58,7 @@
 	
 	<PreferenceCategory android:title="Notification settings">
 	    
-        <com.distantsphere.preferences.ListPreferenceMultiSelect
+        <com.evacipated.preferences.ListPreferenceMultiSelect
             android:key="notify_types"
             android:title="Notification Types"
             android:summary="Events that trigger notifications"
