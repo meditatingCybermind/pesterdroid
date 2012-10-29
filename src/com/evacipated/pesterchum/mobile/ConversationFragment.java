@@ -1,4 +1,4 @@
-package com.distantsphere.pesterchum.mobile;
+package com.evacipated.pesterchum.mobile;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;

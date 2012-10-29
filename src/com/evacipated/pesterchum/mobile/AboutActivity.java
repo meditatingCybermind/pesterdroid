@@ -1,4 +1,4 @@
-package com.distantsphere.pesterchum.mobile;
+package com.evacipated.pesterchum.mobile;
 
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -10,6 +10,7 @@ import android.support.v4.app.NavUtils;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.evacipated.pesterchum.mobile.R;
 
 public class AboutActivity extends SherlockPreferenceActivity {
 

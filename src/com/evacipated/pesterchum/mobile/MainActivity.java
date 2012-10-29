@@ -1,4 +1,4 @@
-package com.distantsphere.pesterchum.mobile;
+package com.evacipated.pesterchum.mobile;
 
 import java.util.ArrayList;
 
@@ -24,8 +24,8 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.devspark.collapsiblesearchmenu.CollapsibleMenuUtils;
-import com.distantsphere.pesterchum.mobile.irc.IRCService;
-import com.distantsphere.pesterchum.mobile.irc.IRCService.IRCBinder;
+import com.evacipated.pesterchum.mobile.irc.IRCService;
+import com.evacipated.pesterchum.mobile.irc.IRCService.IRCBinder;
 
 public class MainActivity extends SherlockFragmentActivity implements ServiceConnection {
 	private Menu mainmenu;

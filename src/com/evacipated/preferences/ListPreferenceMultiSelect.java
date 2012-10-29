@@ -1,4 +1,4 @@
-package com.distantsphere.preferences;
+package com.evacipated.preferences;
 
 import java.util.ArrayList;
 import java.util.Arrays;

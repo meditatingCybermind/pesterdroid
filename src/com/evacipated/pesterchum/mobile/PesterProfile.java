@@ -1,4 +1,4 @@
-package com.distantsphere.pesterchum.mobile;
+package com.evacipated.pesterchum.mobile;
 
 import java.util.ArrayList;
 import java.util.List;

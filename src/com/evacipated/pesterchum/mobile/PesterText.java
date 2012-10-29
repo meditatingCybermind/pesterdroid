@@ -1,4 +1,4 @@
-package com.distantsphere.pesterchum.mobile;
+package com.evacipated.pesterchum.mobile;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -8,6 +8,8 @@ import java.util.Vector;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.evacipated.pesterchum.mobile.R;
 
 import android.content.Context;
 import android.graphics.Color;
