@@ -1,4 +1,4 @@
-package com.evacipated.pesterchum.mobile;
+package com.evacipated.pesterdroid;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.evacipated.pesterchum.mobile.irc;
+package com.evacipated.pesterdroid.irc;
 
 import java.util.regex.Pattern;
 

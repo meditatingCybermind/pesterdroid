@@ -1,4 +1,4 @@
-package com.evacipated.pesterchum.mobile;
+package com.evacipated.pesterdroid;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ import android.util.Log;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.evacipated.pesterchum.mobile.R;
+import com.evacipated.pesterdroid.R;
 import com.evacipated.preferences.ListPreferenceMultiSelect;
 
 public class SettingsActivity extends SherlockPreferenceActivity {

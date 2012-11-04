@@ -1,4 +1,4 @@
-package com.evacipated.pesterchum.mobile;
+package com.evacipated.pesterdroid;
 
 import android.app.Activity;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.evacipated.pesterchum.mobile.irc;
+package com.evacipated.pesterdroid.irc;
 
 import java.io.IOException;
 
@@ -14,8 +14,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.evacipated.pesterchum.mobile.R;
-import com.evacipated.pesterchum.mobile.MainActivity;
+import com.evacipated.pesterdroid.R;
+import com.evacipated.pesterdroid.MainActivity;
 
 public class IRCService extends Service {
 	private IRCConnection connection;

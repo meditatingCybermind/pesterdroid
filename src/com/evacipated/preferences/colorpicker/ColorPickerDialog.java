@@ -16,7 +16,7 @@
 
 package com.evacipated.preferences.colorpicker;
 
-import com.evacipated.pesterchum.mobile.R;
+import com.evacipated.pesterdroid.R;
 
 import android.app.Dialog;
 import android.content.Context;
