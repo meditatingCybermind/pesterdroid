@@ -19,3 +19,5 @@ local.properties
 .classpath
 .project
 proguard-project.txt
+.settings/
+lint.xml
