@@ -127,6 +127,7 @@ public class MainActivity extends SherlockFragmentActivity implements ServiceCon
         		intent = new Intent(this, IRCService.class);
                 intent.setAction(IRCService.ACTION_CONNECT);
                 startService(intent);
+                break;
         	
         	case R.id.mood1:
         	case R.id.mood2:
