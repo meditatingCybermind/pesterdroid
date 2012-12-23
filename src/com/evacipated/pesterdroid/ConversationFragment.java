@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragment;
 
 
