@@ -5,9 +5,6 @@ import java.util.regex.Pattern;
 import org.jibble.pircbot.PircBot;
 import org.jibble.pircbot.User;
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
-
 public class IRCConnection extends PircBot {
 	
 	private Pattern mInitialMatch;
@@ -15,7 +12,10 @@ public class IRCConnection extends PircBot {
 	private boolean isQuitting = false;
 	private final Object isQuittingLock = new Object();
 	
-	public IRCConnection() {
+	private final IRCService parentService;
+	
+	public IRCConnection(IRCService parent) {
+		parentService = parent;
 		this.setAutoNickChange(true);
 	}
 	
@@ -33,7 +33,7 @@ public class IRCConnection extends PircBot {
 	protected void onVersion(String sourceNick, String sourceLogin, String sourceHostname, String target) {
 		this.sendRawLine(
 			"NOTICE " + sourceNick + " :\u0001VERSION " +
-			"Pesterchum Mobile 1.0" +
+			"Pesterdroid 0.1" +
 			"\u0001"
 		);
 	}
@@ -54,7 +54,7 @@ public class IRCConnection extends PircBot {
 	
 	@Override
 	protected void onNickChange(String oldNick, String login, String hostname, String newNick) {
-		
+		parentService.nickChange(newNick);
 	}
 	
 	@Override

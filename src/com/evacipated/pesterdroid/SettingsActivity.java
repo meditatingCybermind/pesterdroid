@@ -33,7 +33,7 @@ public class SettingsActivity extends SherlockPreferenceActivity {
         
         username = (EditTextPreference)findPreference("username");
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        username.setSummary(prefs.getString("username", "pesterClient"));
+        username.setSummary(prefs.getString("username", getString(R.string.default_handle)));
         username.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 			
 			@Override

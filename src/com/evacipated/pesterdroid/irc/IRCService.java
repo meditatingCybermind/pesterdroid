@@ -10,8 +10,11 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Binder;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.evacipated.pesterdroid.R;
@@ -71,7 +74,8 @@ public class IRCService extends Service {
             notifyIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notifyIntent, 0);
             
-            notification.setLatestEventInfo(this, getText(R.string.app_name), "pesterClient", contentIntent);
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            notification.setLatestEventInfo(this, getText(R.string.app_name), prefs.getString("username", getString(R.string.default_handle)), contentIntent);
             
             startForeground(FOREGROUND_NOTIFICATION, notification);
 		} else if (ACTION_BACKGROUND.equals(intent.getAction()) && !foreground) {
@@ -93,6 +97,15 @@ public class IRCService extends Service {
 			}
 		}
 	}
+	
+	public void nickChange(String nick) {
+		Intent notifyIntent = new Intent(this, MainActivity.class);
+		notifyIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notifyIntent, 0);
+        
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		notification.setLatestEventInfo(this, getText(R.string.app_name), prefs.getString("username", getString(R.string.default_handle)), contentIntent);
+	}
 
 	@Override
 	public IBinder onBind(Intent arg0) {
@@ -101,10 +114,13 @@ public class IRCService extends Service {
 
 	public void connect() throws NickAlreadyInUseException, IOException, IrcException {
 		Log.w("connect()", "starting connection");
-		connection = new IRCConnection();
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		
+		connection = new IRCConnection(this);
 		connection.setVerbose(true);
-		connection.setNickname("mobileTest");
-		connection.setRealName("pcm1");
+		connection.setNickname(prefs.getString("username", getString(R.string.default_handle)));
+		connection.setRealName("pcd2");
+		connection.setIdent("pcd2");
 		connection.connect("irc.mindfang.org");
 	}
 	

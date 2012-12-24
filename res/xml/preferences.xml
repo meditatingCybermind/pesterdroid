@@ -5,7 +5,7 @@
         <EditTextPreference
             android:key="username"
             android:title="Handle"
-            android:defaultValue="pesterClient"
+            android:defaultValue="@string/default_handle"
             android:dialogTitle="Handle (Username)"/>
         <com.evacipated.preferences.colorpicker.ColorPickerPreference
             android:key="colour"

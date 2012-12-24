@@ -21,5 +21,6 @@
     <string name="title_activity_start">StartActivity</string>
     <string name="notification_running">Pesterdroid Running…</string>
     <string name="default_notification_types">Memo MentionsOV=I=XseparatorX=I=VONew Conversations</string>
+    <string name="default_handle">pesterDroid</string>
 
 </resources>
