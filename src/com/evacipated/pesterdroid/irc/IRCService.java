@@ -16,6 +16,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.evacipated.pesterdroid.R;
 import com.evacipated.pesterdroid.MainActivity;
@@ -83,17 +84,30 @@ public class IRCService extends Service {
 		} else if (ACTION_ACK_NEW_MENTIONS.equals(intent.getAction())) {
 			//ackNewMentions(intent.getIntExtra(EXTRA_ACK_SERVERID, -1), intent.getStringExtra(EXTRA_ACK_CONVTITLE));
 		} else if (ACTION_CONNECT.equals(intent.getAction())) {
-			try {
-				connect();
-			} catch (NickAlreadyInUseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IrcException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			int i = 0;
+			while (i < 3) {
+				++i;
+				try {
+					connect();
+				} catch (NickAlreadyInUseException e) {
+					//e.printStackTrace();
+				} catch (IOException e) {
+					Resources res = getResources();
+					String msg = String.format(res.getString(R.string.connect_fail), i);
+					if (i >= res.getInteger(R.integer.reconnects)) {
+						Toast.makeText(getApplicationContext(), msg + "exiting.", Toast.LENGTH_SHORT).show();
+						stopSelf();
+						break;
+					} else {
+						Toast.makeText(getApplicationContext(), msg + "retrying…", Toast.LENGTH_SHORT).show();
+					}
+					continue;
+					//e.printStackTrace();
+				} catch (IrcException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
 			}
 		}
 	}
