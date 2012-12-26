@@ -32,14 +32,10 @@ import android.widget.LinearLayout;
 
 /**
  * A preference type that allows a user to choose a time
+ * 
  * @author Sergey Margaritov
  */
-public class ColorPickerPreference
-	extends
-		Preference
-	implements
-		Preference.OnPreferenceClickListener,
-		ColorPickerDialog.OnColorChangedListener {
+public class ColorPickerPreference extends Preference implements Preference.OnPreferenceClickListener, ColorPickerDialog.OnColorChangedListener {
 
 	View mView;
 	ColorPickerDialog mDialog;
@@ -64,7 +60,7 @@ public class ColorPickerPreference
 		super(context, attrs, defStyle);
 		init(context, attrs);
 	}
-	
+
 	@Override
 	protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
 		onColorChanged(restoreValue ? getValue() : (Integer) defaultValue);
@@ -101,17 +97,14 @@ public class ColorPickerPreference
 	}
 
 	private void setPreviewColor() {
-		if (mView == null) return;
+		if (mView == null)
+			return;
 		ImageView iView = new ImageView(getContext());
-		LinearLayout widgetFrameView = ((LinearLayout)mView.findViewById(android.R.id.widget_frame));
-		if (widgetFrameView == null) return;
+		LinearLayout widgetFrameView = ((LinearLayout) mView.findViewById(android.R.id.widget_frame));
+		if (widgetFrameView == null)
+			return;
 		widgetFrameView.setVisibility(View.VISIBLE);
-		widgetFrameView.setPadding(
-			widgetFrameView.getPaddingLeft(),
-			widgetFrameView.getPaddingTop(),
-			(int)(mDensity * 8),
-			widgetFrameView.getPaddingBottom()
-		);
+		widgetFrameView.setPadding(widgetFrameView.getPaddingLeft(), widgetFrameView.getPaddingTop(), (int) (mDensity * 8), widgetFrameView.getPaddingBottom());
 		// remove already create preview image
 		int count = widgetFrameView.getChildCount();
 		if (count > 0) {
@@ -119,12 +112,12 @@ public class ColorPickerPreference
 		}
 		widgetFrameView.addView(iView);
 		widgetFrameView.setMinimumWidth(0);
-		iView.setBackgroundDrawable(new AlphaPatternDrawable((int)(5 * mDensity)));
+		iView.setBackgroundDrawable(new AlphaPatternDrawable((int) (5 * mDensity)));
 		iView.setImageBitmap(getPreviewBitmap());
 	}
 
 	private Bitmap getPreviewBitmap() {
-		int d = (int) (mDensity * 31); //30dip
+		int d = (int) (mDensity * 31); // 30dip
 		int color = getValue();
 		Bitmap bm = Bitmap.createBitmap(d, d, Config.ARGB_8888);
 		int w = bm.getWidth();
@@ -132,7 +125,7 @@ public class ColorPickerPreference
 		int c = color;
 		for (int i = 0; i < w; i++) {
 			for (int j = i; j < h; j++) {
-				c = (i <= 1 || j <= 1 || i >= w-2 || j >= h-2) ? Color.GRAY : color;
+				c = (i <= 1 || j <= 1 || i >= w - 2 || j >= h - 2) ? Color.GRAY : color;
 				bm.setPixel(i, j, c);
 				if (i != j) {
 					bm.setPixel(j, i, c);
@@ -173,7 +166,7 @@ public class ColorPickerPreference
 		showDialog(null);
 		return false;
 	}
-	
+
 	protected void showDialog(Bundle state) {
 		mDialog = new ColorPickerDialog(getContext(), getValue());
 		mDialog.setOnColorChangedListener(this);
@@ -188,6 +181,7 @@ public class ColorPickerPreference
 
 	/**
 	 * Toggle Alpha Slider visibility (by default it's disabled)
+	 * 
 	 * @param enable
 	 */
 	public void setAlphaSliderEnabled(boolean enable) {
@@ -196,117 +190,117 @@ public class ColorPickerPreference
 
 	/**
 	 * For custom purposes. Not used by ColorPickerPreferrence
+	 * 
 	 * @param color
 	 * @author Unknown
 	 */
-    public static String convertToARGB(int color) {
-        String alpha = Integer.toHexString(Color.alpha(color));
-        String red = Integer.toHexString(Color.red(color));
-        String green = Integer.toHexString(Color.green(color));
-        String blue = Integer.toHexString(Color.blue(color));
+	public static String convertToARGB(int color) {
+		String alpha = Integer.toHexString(Color.alpha(color));
+		String red = Integer.toHexString(Color.red(color));
+		String green = Integer.toHexString(Color.green(color));
+		String blue = Integer.toHexString(Color.blue(color));
 
-        if (alpha.length() == 1) {
-            alpha = "0" + alpha;
-        }
+		if (alpha.length() == 1) {
+			alpha = "0" + alpha;
+		}
 
-        if (red.length() == 1) {
-            red = "0" + red;
-        }
+		if (red.length() == 1) {
+			red = "0" + red;
+		}
 
-        if (green.length() == 1) {
-            green = "0" + green;
-        }
+		if (green.length() == 1) {
+			green = "0" + green;
+		}
 
-        if (blue.length() == 1) {
-            blue = "0" + blue;
-        }
+		if (blue.length() == 1) {
+			blue = "0" + blue;
+		}
 
-        return "#" + alpha + red + green + blue;
-    }
+		return "#" + alpha + red + green + blue;
+	}
 
-    /**
-     * For custom purposes. Not used by ColorPickerPreferrence
-     * @param argb
-     * @throws NumberFormatException
-     * @author Unknown
-     */
-    public static int convertToColorInt(String argb) throws NumberFormatException {
+	/**
+	 * For custom purposes. Not used by ColorPickerPreferrence
+	 * 
+	 * @param argb
+	 * @throws NumberFormatException
+	 * @author Unknown
+	 */
+	public static int convertToColorInt(String argb) throws NumberFormatException {
 
-    	if (argb.startsWith("#")) {
-    		argb = argb.replace("#", "");
-    	}
+		if (argb.startsWith("#")) {
+			argb = argb.replace("#", "");
+		}
 
-        int alpha = -1, red = -1, green = -1, blue = -1;
+		int alpha = -1, red = -1, green = -1, blue = -1;
 
-        if (argb.length() == 8) {
-            alpha = Integer.parseInt(argb.substring(0, 2), 16);
-            red = Integer.parseInt(argb.substring(2, 4), 16);
-            green = Integer.parseInt(argb.substring(4, 6), 16);
-            blue = Integer.parseInt(argb.substring(6, 8), 16);
-        }
-        else if (argb.length() == 6) {
-            alpha = 255;
-            red = Integer.parseInt(argb.substring(0, 2), 16);
-            green = Integer.parseInt(argb.substring(2, 4), 16);
-            blue = Integer.parseInt(argb.substring(4, 6), 16);
-        }
+		if (argb.length() == 8) {
+			alpha = Integer.parseInt(argb.substring(0, 2), 16);
+			red = Integer.parseInt(argb.substring(2, 4), 16);
+			green = Integer.parseInt(argb.substring(4, 6), 16);
+			blue = Integer.parseInt(argb.substring(6, 8), 16);
+		} else if (argb.length() == 6) {
+			alpha = 255;
+			red = Integer.parseInt(argb.substring(0, 2), 16);
+			green = Integer.parseInt(argb.substring(2, 4), 16);
+			blue = Integer.parseInt(argb.substring(4, 6), 16);
+		}
 
-        return Color.argb(alpha, red, green, blue);
-    }
-    
-    @Override
-    protected Parcelable onSaveInstanceState() {
-        final Parcelable superState = super.onSaveInstanceState();
-        if (mDialog == null || !mDialog.isShowing()) {
-            return superState;
-        }
+		return Color.argb(alpha, red, green, blue);
+	}
 
-        final SavedState myState = new SavedState(superState);
-        myState.dialogBundle = mDialog.onSaveInstanceState();
-        return myState;
-    }
+	@Override
+	protected Parcelable onSaveInstanceState() {
+		final Parcelable superState = super.onSaveInstanceState();
+		if (mDialog == null || !mDialog.isShowing()) {
+			return superState;
+		}
 
-    @Override
-    protected void onRestoreInstanceState(Parcelable state) {
-        if (state == null || !(state instanceof SavedState)) {
-            // Didn't save state for us in onSaveInstanceState
-            super.onRestoreInstanceState(state);
-            return;
-        }
+		final SavedState myState = new SavedState(superState);
+		myState.dialogBundle = mDialog.onSaveInstanceState();
+		return myState;
+	}
 
-        SavedState myState = (SavedState) state;
-        super.onRestoreInstanceState(myState.getSuperState());
-        showDialog(myState.dialogBundle);
-    }
+	@Override
+	protected void onRestoreInstanceState(Parcelable state) {
+		if (state == null || !(state instanceof SavedState)) {
+			// Didn't save state for us in onSaveInstanceState
+			super.onRestoreInstanceState(state);
+			return;
+		}
 
-    private static class SavedState extends BaseSavedState {
-        Bundle dialogBundle;
-        
-        public SavedState(Parcel source) {
-            super(source);
-            dialogBundle = source.readBundle();
-        }
+		SavedState myState = (SavedState) state;
+		super.onRestoreInstanceState(myState.getSuperState());
+		showDialog(myState.dialogBundle);
+	}
 
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            super.writeToParcel(dest, flags);
-            dest.writeBundle(dialogBundle);
-        }
+	private static class SavedState extends BaseSavedState {
+		Bundle dialogBundle;
 
-        public SavedState(Parcelable superState) {
-            super(superState);
-        }
-        
-        @SuppressWarnings("unused")
-        public static final Parcelable.Creator<SavedState> CREATOR =
-                new Parcelable.Creator<SavedState>() {
-            public SavedState createFromParcel(Parcel in) {
-                return new SavedState(in);
-            }
+		public SavedState(Parcel source) {
+			super(source);
+			dialogBundle = source.readBundle();
+		}
 
-            public SavedState[] newArray(int size) {
-                return new SavedState[size];
-            }
-        };
-    }
+		@Override
+		public void writeToParcel(Parcel dest, int flags) {
+			super.writeToParcel(dest, flags);
+			dest.writeBundle(dialogBundle);
+		}
+
+		public SavedState(Parcelable superState) {
+			super(superState);
+		}
+
+		@SuppressWarnings("unused")
+		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
+			public SavedState createFromParcel(Parcel in) {
+				return new SavedState(in);
+			}
+
+			public SavedState[] newArray(int size) {
+				return new SavedState[size];
+			}
+		};
+	}
 }

@@ -14,14 +14,14 @@ import com.evacipated.pesterdroid.R;
 
 public class AboutActivity extends SherlockPreferenceActivity {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        addPreferencesFromResource(R.xml.about);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        
-        PackageInfo pInfo;
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		addPreferencesFromResource(R.xml.about);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+		PackageInfo pInfo;
 		try {
 			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 			findPreference("about_about").setSummary("Version " + pInfo.versionName);
@@ -29,29 +29,29 @@ public class AboutActivity extends SherlockPreferenceActivity {
 			e.printStackTrace();
 		}
 	}
-    
-    @Override
-    public void onResume() {
-    	super.onResume();
-    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (prefs.getBoolean("orientation_lock", false)) {
-        	if (prefs.getString("orientation_value", "Portrait").equals("Portrait")) {
-        		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        	} else {
-        		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        	}
-        } else {
-        	setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
-        }
-    }
-    
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		if (prefs.getBoolean("orientation_lock", false)) {
+			if (prefs.getString("orientation_value", "Portrait").equals("Portrait")) {
+				setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+			} else {
+				setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+			}
+		} else {
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 }
