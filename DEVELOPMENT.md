@@ -1,6 +1,15 @@
 Development
 ===========
 
+Getting the Code
+----------------
+<pre>
+git clone https://github.com/kiooeht/pesterdroid.git
+git submodule init
+git submodule update
+</pre>
+Note that submodule is required to pull in the ActionBarSherlock library.
+
 Code Style
 ----------
 Mainly for the coding style use common sense:
