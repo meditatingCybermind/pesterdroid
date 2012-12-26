@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.jibble.pircbot.IrcException;
 import org.jibble.pircbot.NickAlreadyInUseException;
+import org.jibble.pircbot.OutputThread;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -36,6 +37,8 @@ public class IRCService extends Service {
 
 	private NotificationManager notificationManager;
 	private Notification notification;
+	
+	private int tries = 0;
 	
 	private final IRCBinder mBinder = new IRCBinder();
 	
@@ -84,17 +87,21 @@ public class IRCService extends Service {
 		} else if (ACTION_ACK_NEW_MENTIONS.equals(intent.getAction())) {
 			//ackNewMentions(intent.getIntExtra(EXTRA_ACK_SERVERID, -1), intent.getStringExtra(EXTRA_ACK_CONVTITLE));
 		} else if (ACTION_CONNECT.equals(intent.getAction())) {
-			int i = 0;
-			while (i < 3) {
-				++i;
+			int lTries = 0;
+			while (lTries < 3) {
+				++lTries;
+				++tries;
 				try {
 					connect();
 				} catch (NickAlreadyInUseException e) {
+					String nick = connection.getName() + tries;
+					connection.sendRawLineViaQueue("NICK " + nick);
+					continue;
 					//e.printStackTrace();
 				} catch (IOException e) {
 					Resources res = getResources();
-					String msg = String.format(res.getString(R.string.connect_fail), i);
-					if (i >= res.getInteger(R.integer.reconnects)) {
+					String msg = String.format(res.getString(R.string.connect_fail), lTries);
+					if (lTries >= res.getInteger(R.integer.reconnects)) {
 						Toast.makeText(getApplicationContext(), msg + "exiting.", Toast.LENGTH_SHORT).show();
 						stopSelf();
 						break;
@@ -150,5 +157,9 @@ public class IRCService extends Service {
 		if (foreground) {
 			stopForeground(true);
 		}
+	}
+	
+	protected void onConnect() {
+		tries = 0;
 	}
 }

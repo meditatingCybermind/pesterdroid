@@ -16,7 +16,7 @@ public class IRCConnection extends PircBot {
 	
 	public IRCConnection(IRCService parent) {
 		parentService = parent;
-		this.setAutoNickChange(true);
+		this.setAutoNickChange(false);
 	}
 	
 	public void setNickname(String nickname) {
@@ -44,7 +44,7 @@ public class IRCConnection extends PircBot {
 	
 	@Override
 	public void onConnect() {
-		
+		parentService.onConnect();
 	}
 	
 	@Override
@@ -54,7 +54,9 @@ public class IRCConnection extends PircBot {
 	
 	@Override
 	protected void onNickChange(String oldNick, String login, String hostname, String newNick) {
-		parentService.nickChange(newNick);
+		if (getNick().equals(oldNick)) {
+			parentService.nickChange(newNick);
+		}
 	}
 	
 	@Override
