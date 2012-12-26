@@ -26,7 +26,7 @@ import com.devspark.collapsiblesearchmenu.CollapsibleMenuUtils;
 import com.evacipated.pesterdroid.irc.IRCService;
 import com.evacipated.pesterdroid.irc.IRCService.IRCBinder;
 
-public class MainActivity extends SherlockFragmentActivity implements ServiceConnection {
+public class Pesterdroid extends SherlockFragmentActivity implements ServiceConnection {
 	private Menu mainmenu;
 	private ViewPager mViewPager;
 	private MyTabListener mTabsAdapter;

@@ -18,7 +18,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.evacipated.pesterdroid.MainActivity;
+import com.evacipated.pesterdroid.Pesterdroid;
 import com.evacipated.pesterdroid.R;
 
 public class IRCService extends Service {
@@ -73,7 +73,7 @@ public class IRCService extends Service {
 
 			notification = new Notification(R.drawable.ic_launcher, getText(R.string.notification_running), 0);
 
-			Intent notifyIntent = new Intent(this, MainActivity.class);
+			Intent notifyIntent = new Intent(this, Pesterdroid.class);
 			notifyIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notifyIntent, 0);
 
@@ -120,7 +120,7 @@ public class IRCService extends Service {
 	}
 
 	public void nickChange(String nick) {
-		Intent notifyIntent = new Intent(this, MainActivity.class);
+		Intent notifyIntent = new Intent(this, Pesterdroid.class);
 		notifyIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notifyIntent, 0);
 
