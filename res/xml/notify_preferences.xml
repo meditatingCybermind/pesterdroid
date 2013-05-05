@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Notification settings"
+    android:key="notify_settings">
+    
+    <PreferenceCategory android:title="Notification settings">
+        <RingtonePreference
+            android:showSilent="true"
+            android:showDefault="true"
+            android:title="Select ringtone"
+            android:ringtoneType="notification"
+            android:key="notify_ringtone" />
+       </PreferenceCategory>
+
+	<PreferenceCategory android:title="Vibrate settings">
+	    <ListPreference
+	        android:title="Vibrate"
+	        android:summary="Also vibrate when notified"
+	        android:key="notify_vibrate"/>
+	    <ListPreference
+	        android:title="Vibrate pattern"
+	        android:summary="Change vibrate pattern"
+	        android:key="notify_vibrate_pattern"/>
+	    <CheckBoxPreference
+	        android:key="notify_vibrate_oncall"
+	        android:summary="Allow vibrate while on a call"
+	        android:title="Vibrate on Call"/>
+	</PreferenceCategory>
+</PreferenceScreen>

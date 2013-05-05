@@ -23,5 +23,7 @@
     <string name="default_notification_types">Memo MentionsOV=I=XseparatorX=I=VONew Conversations</string>
     <string name="default_handle">pesterDroid</string>
     <string name="connect_fail">Failed to connect: %1$d; </string>
+    <string name="title_activity_credits">Credits</string>
+    <string name="title_activity_notication_settings">Notification Settings</string>
 
 </resources>

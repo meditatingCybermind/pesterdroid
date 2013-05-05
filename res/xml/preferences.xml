@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-    
+
     <PreferenceCategory android:title="Profile settings">
         <EditTextPreference
             android:key="username"
@@ -13,7 +13,7 @@
             android:summary="Text colour"
             android:defaultValue="#FF000000"/>
     </PreferenceCategory>
-    
+
     <PreferenceCategory android:title="Network settings">
         <CheckBoxPreference
             android:title="Low bandwidth mode"
@@ -21,10 +21,7 @@
             android:key="bandwidth_low"
             android:defaultValue="off"/>
     </PreferenceCategory>
-    
-    
-	
-	
+
 	<PreferenceCategory android:title="Chat settings">
 		<ListPreference
 		    android:entries="@array/font_sizes"
@@ -65,35 +62,12 @@
             android:entries="@array/notification_types"
             android:entryValues="@array/notification_types"
             android:defaultValue="@string/default_notification_types"/>
-        
-	    <PreferenceScreen
-	        android:title="Notification settings"
-	        android:key="notify_settings">
-	        
-	        <PreferenceCategory android:title="Notification settings">
-	            <RingtonePreference
-	                android:showSilent="true"
-	                android:showDefault="true"
-	                android:title="Select ringtone"
-	                android:ringtoneType="notification"
-	                android:key="notify_ringtone" />
-            </PreferenceCategory>
-	    
-			<PreferenceCategory android:title="Vibrate settings">
-			    <ListPreference
-			        android:title="Vibrate"
-			        android:summary="Also vibrate when notified"
-			        android:key="notify_vibrate"/>
-			    <ListPreference
-			        android:title="Vibrate pattern"
-			        android:summary="Change vibrate pattern"
-			        android:key="notify_vibrate_pattern"/>
-			    <CheckBoxPreference
-			        android:key="notify_vibrate_oncall"
-			        android:summary="Allow vibrate while on a call"
-			        android:title="Vibrate on Call"/>
-			</PreferenceCategory>
-		</PreferenceScreen>
+        <Preference android:title="Notification Settings" android:key="notify_settings">
+            <intent android:action="android.intent.action.VIEW"
+                android:targetPackage="com.evacipated.pesterdroid"
+                android:targetClass="com.evacipated.pesterdroid.NotificationSettingsActivity">
+            </intent>
+        </Preference>
 
 	</PreferenceCategory>
 	

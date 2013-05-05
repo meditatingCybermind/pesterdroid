@@ -2,45 +2,19 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     <PreferenceCategory android:title="Help">
         <Preference android:title="Contact Developer" android:icon="@android:drawable/ic_menu_send">
-            <intent android:action="android.intent.action.VIEW" android:data="mailto:pesterdroid@evacipated.com?subject=Pesterdroid">
+            <intent android:action="android.intent.action.VIEW"
+                android:data="mailto:pesterdroid@evacipated.com?subject=Pesterdroid">
             </intent>
         </Preference>
     </PreferenceCategory>
     
     <PreferenceCategory android:title="About">
         <Preference android:title="@string/app_name" android:summary="Version 0.0.0" android:key="about_about" />
-        <PreferenceScreen android:title="Credits">
-            <Preference android:title="@string/app_name"
-                android:summary="kiooeht"/>
-            <Preference android:title="Pesterchum 3.14 - 3.41.X"
-                android:summary="illuminatedwax / kiooeht"
-                android:key="about_pesterchum">
-                <intent android:action="android.intent.action.VIEW"
-                    android:data="http://www.mspaforums.com/showthread.php?43922" />
-            </Preference>
-            <Preference android:title="ActionBarSherlock"
-                android:summary="Jake Wharton"
-                android:key="about_sherlock">
-                <intent android:action="android.intent.action.VIEW"
-                    android:data="http://actionbarsherlock.com/" />
-            </Preference>
-            <Preference android:title="Android-CollapsibleSearchMenu"
-                android:summary="Evgeny Shishkin"
-                android:key="about_searchmenu">
-                <intent android:action="android.intent.action.VIEW"
-                    android:data="http://johnkil.github.com/Android-CollapsibleSearchMenu/" />
-            </Preference>
-            <Preference android:title="Colour Picker"
-                android:summary="Daniel Nilsson"
-                android:key="about_colourpicker">
-                <intent android:action="android.intent.action.VIEW"
-                    android:data="https://github.com/attenzione/android-ColorPickerPreference/" />
-            </Preference>
-        </PreferenceScreen>
-
+        <Preference android:title="Credits">
+            <intent android:action="android.intent.action.VIEW"
+                android:targetPackage="com.evacipated.pesterdroid"
+                android:targetClass="com.evacipated.pesterdroid.CreditsActivity">
+            </intent>
+        </Preference>
     </PreferenceCategory>
-    
-    
-    
-
 </PreferenceScreen>

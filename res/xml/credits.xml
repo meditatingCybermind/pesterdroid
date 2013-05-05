@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:title="@string/app_name"
+        android:summary="kiooeht"/>
+    <Preference android:title="Pesterchum 3.14 - 3.41.X"
+        android:summary="illuminatedwax / kiooeht"
+        android:key="about_pesterchum">
+        <intent android:action="android.intent.action.VIEW"
+            android:data="http://www.mspaforums.com/showthread.php?43922" />
+    </Preference>
+    <Preference android:title="ActionBarSherlock"
+        android:summary="Jake Wharton"
+        android:key="about_sherlock">
+        <intent android:action="android.intent.action.VIEW"
+            android:data="http://actionbarsherlock.com/" />
+    </Preference>
+    <Preference android:title="Android-CollapsibleSearchMenu"
+        android:summary="Evgeny Shishkin"
+        android:key="about_searchmenu">
+        <intent android:action="android.intent.action.VIEW"
+            android:data="http://johnkil.github.com/Android-CollapsibleSearchMenu/" />
+    </Preference>
+    <Preference android:title="Colour Picker"
+        android:summary="Daniel Nilsson"
+        android:key="about_colourpicker">
+        <intent android:action="android.intent.action.VIEW"
+            android:data="https://github.com/attenzione/android-ColorPickerPreference/" />
+    </Preference>
+</PreferenceScreen>

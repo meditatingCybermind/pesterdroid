@@ -11,13 +11,11 @@ import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
-import android.preference.PreferenceScreen;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.evacipated.pesterdroid.R;
 import com.evacipated.preferences.ListPreferenceMultiSelect;
 
 public class SettingsActivity extends SherlockPreferenceActivity {
@@ -45,10 +43,10 @@ public class SettingsActivity extends SherlockPreferenceActivity {
 		ListPreferenceMultiSelect notify = (ListPreferenceMultiSelect) findPreference("notify_types");
 		String[] values = notify.getValues();
 		if (values == null || values.length == 0) {
-			PreferenceScreen notify_settings = (PreferenceScreen) findPreference("notify_settings");
+			Preference notify_settings = findPreference("notify_settings");
 			notify_settings.setEnabled(false);
 		} else {
-			PreferenceScreen notify_settings = (PreferenceScreen) findPreference("notify_settings");
+			Preference notify_settings = findPreference("notify_settings");
 			notify_settings.setEnabled(true);
 		}
 		notify.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -57,10 +55,10 @@ public class SettingsActivity extends SherlockPreferenceActivity {
 			@Override
 			public boolean onPreferenceChange(Preference preference, Object newValue) {
 				if (((ArrayList<String>) newValue).isEmpty()) {
-					PreferenceScreen notify_settings = (PreferenceScreen) findPreference("notify_settings");
+					Preference notify_settings = findPreference("notify_settings");
 					notify_settings.setEnabled(false);
 				} else {
-					PreferenceScreen notify_settings = (PreferenceScreen) findPreference("notify_settings");
+					Preference notify_settings = findPreference("notify_settings");
 					notify_settings.setEnabled(true);
 				}
 				return true;

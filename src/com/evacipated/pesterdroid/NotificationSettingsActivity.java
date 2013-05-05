@@ -2,31 +2,19 @@ package com.evacipated.pesterdroid;
 
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NavUtils;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
 
-public class AboutActivity extends SherlockPreferenceActivity {
-
+public class NotificationSettingsActivity extends SherlockPreferenceActivity {
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		addPreferencesFromResource(R.xml.about);
+		addPreferencesFromResource(R.xml.notify_preferences);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-		PackageInfo pInfo;
-		try {
-			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-			findPreference("about_about").setSummary("Version " + pInfo.versionName);
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
@@ -48,9 +36,10 @@ public class AboutActivity extends SherlockPreferenceActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			NavUtils.navigateUpFromSameTask(this);
+			finish();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
 }
